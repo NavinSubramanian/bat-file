@@ -2,12 +2,13 @@ pipeline {
   agent any
   environment {
     PATH = "C:\\WINDOWS\\SYSTEM32"
+    JAVA_HOME='C:\\Program Files\\Java\\jdk-17'
   }
   stages {
     stage('Build') {
       steps {
         bat '''
-        set PATH=%PATH%
+        set PATH=%JAVA_HOME%;%PATH%
         echo Starting hello World pipeline
         javac Hello.java
         '''
@@ -16,7 +17,7 @@ pipeline {
     stage('Execute') {
       steps {
         bat '''
-        set PATH=%PATH%
+        set PATH=%JAVA_HOME%;%PATH%
         java Hello
         '''
       }
