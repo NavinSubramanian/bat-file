@@ -9,14 +9,15 @@ pipeline {
         bat '''
         set PATH=%PATH%
         echo Starting hello World pipeline
+        javac Hello.java
         '''
       }
     }
-    stage('Check') {
+    stage('Execute') {
       steps {
         bat '''
         set PATH=%PATH%
-        hello.bat
+        java Hello
         '''
       }
     }
